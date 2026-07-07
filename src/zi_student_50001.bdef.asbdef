@@ -1,0 +1,32 @@
+managed implementation in class zbp_i_student_50001 unique;
+strict ( 2 );
+
+define behavior for ZI_Student_50001 alias Student
+persistent table zdb_rap        //Contains your details/information
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( numbering : managed, readonly ) Id;
+//  action ( features : instance ) setAdmitted result [1] $self;
+    action setAdmitted result [1] $self;
+
+
+  mapping for ZDB_RAP
+  {
+      Id = id;
+      Firstname = firstname;
+      Lastname = lastname;
+      Age = age;
+      Course = course;
+      Courseduration = courseduration;
+      Status = status;
+      Gender = gender;
+      DOB = dob;
+      Lastchangedat = lastchangedat;
+      Locallastchangedat = locallastchangedat;
+  }
+}
